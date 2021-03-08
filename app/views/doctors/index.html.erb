@@ -1,0 +1,9 @@
+<h2 style="text-align: center;">Doctors Index</h2>
+
+<div class="doctors">
+  <% @doctors.each do |doctor| %>
+    <p>Name: <%= doctor.name %></p>
+    <p>Years Practiced: <%= doctor.years_practiced %></p>
+    <p>University: <%= doctor.university %></p>
+  <% end %>
+</div>
