@@ -24,3 +24,8 @@
   <p><%= @surgery.doctors.return_least_experienced_doctor.name %></p>
   <p>Years Practiced: <%= @surgery.doctors.return_least_experienced_doctor.years_practiced %></p>
 </div>
+
+<%= form_with(url: "/surgeries/#{@surgery.id}", method: "create", local: true) do %>
+  <%= text_field_tag("DoctorName") %>
+  <%= submit_tag("Add Doctor") %>
+<% end %>

@@ -16,6 +16,10 @@ RSpec.describe "Surgeries show page" do
                                 years_practiced: 1,
                                 university: "University of West Virginia")
 
+      @doctor4 = Doctor.create!(name: "Shelley Duvall",
+                                years_practiced: 11,
+                                university: "University of West Virginia")
+
       DoctorSurgery.create(doctor: @doctor1, surgery: @surgery1)
       DoctorSurgery.create(doctor: @doctor2, surgery: @surgery1)
       DoctorSurgery.create(doctor: @doctor3, surgery: @surgery1)
@@ -65,6 +69,27 @@ RSpec.describe "Surgeries show page" do
       within(".least-experienced") do
         expect(page).to have_content("Brad Pitt")
         expect(page).to have_content("Years Practiced: 1")
+      end
+    end
+
+    it "displays a text field to add a doctor to this surgeyr" do
+      visit "/surgeries/#{@surgery1.id}"
+
+      expect(page).to have_field("DoctorName")
+    end
+
+    it "adds a doctor to the surgery page and displays doctor info" do
+      visit "/surgeries/#{@surgery1.id}"
+
+      fill_in "DoctorName", with: "Shelley Duvall"
+      click_button 'Add Doctor'
+
+      expect(current_path).to eq("/surgeries/#{@surgery1.id}")
+
+      within(".doctors") do
+        expect(page).to have_content("Name: Shelley Duvall")
+        expect(page).to have_content("Years Practiced: 11")
+
       end
     end
   end

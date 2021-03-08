@@ -19,6 +19,10 @@
 @surgery1 = Surgery.create!(title: "Tonsillectomy",
                             day_of_week: "Tuesday",
                             operating_room_number: 113)
+                            
+@doctor4 = Doctor.create!(name: "Shelley Duvall",
+                          years_practiced: 11,
+                          university: "University of West Virginia")
 
 DoctorSurgery.create(doctor: @doctor1, surgery: @surgery1)
 DoctorSurgery.create(doctor: @doctor2, surgery: @surgery1)
