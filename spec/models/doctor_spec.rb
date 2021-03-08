@@ -30,5 +30,19 @@ describe Doctor, type: :model do
          expect(doctors.third).to eq(@doctor3)
        end
      end
+
+     describe "##return_most_experienced_doctor" do
+       it "returns the doctor with the most years practiced" do
+         doctor = Doctor.return_most_experienced_doctor
+         expect(doctor).to eq(@doctor2)
+       end
+     end
+
+     describe "##return_least_experienced_doctor" do
+       it "returns the doctor with the least years practiced" do
+         doctor = Doctor.return_least_experienced_doctor
+         expect(doctor).to eq(@doctor3)
+       end
+     end
    end
 end

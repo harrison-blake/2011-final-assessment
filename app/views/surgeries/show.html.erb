@@ -1,0 +1,26 @@
+<h2 style="text-align: center;"><%= @surgery.title %></h2>
+
+<div class="surgery-info">
+  <p>This surgery will be performed on a <%= @surgery.day_of_week %></p>
+  <p>Operating Room: <%= @surgery.operating_room_number %></p>
+</div>
+
+<div class="doctors">
+  <h4>Doctors Performing the <%= @surgery.title %>:</h4>
+  <% @surgery.doctors.each do |doctor| %>
+    <p>Name: <%= doctor.name %></p>
+    <p>Years Practiced: <%= doctor.years_practiced %></p>
+  <% end %>
+</div>
+
+<div class="most-experienced">
+  <h4>Most Experienced Doctor</h4>
+  <p><%= @surgery.doctors.return_most_experienced_doctor.name %></p>
+  <p>Years Practiced: <%= @surgery.doctors.return_most_experienced_doctor.years_practiced %></p>
+</div>
+
+<div class="least-experienced">
+  <h4>Least Experienced Doctor</h4>
+  <p><%= @surgery.doctors.return_least_experienced_doctor.name %></p>
+  <p>Years Practiced: <%= @surgery.doctors.return_least_experienced_doctor.years_practiced %></p>
+</div>
